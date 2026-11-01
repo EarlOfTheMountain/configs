@@ -1,0 +1,65 @@
+! --- Shared look: Tokyo Night ---
+! xterm
+xterm*foreground:       #c0caf5
+xterm*background:       #2a2a2a
+xterm*cursorColor:      #c0caf5
+xterm*highlightColor:   #33467c
+xterm*color0:           #15161e
+xterm*color1:           #f7768e
+xterm*color2:           #9ece6a
+xterm*color3:           #e0af68
+xterm*color4:           #7aa2f7
+xterm*color5:           #bb9af7
+xterm*color6:           #7dcfff
+xterm*color7:           #a9b1d6
+xterm*color8:           #414868
+xterm*color9:           #f7768e
+xterm*color10:          #9ece6a
+xterm*color11:          #e0af68
+xterm*color12:          #7aa2f7
+xterm*color13:          #bb9af7
+xterm*color14:          #7dcfff
+xterm*color15:          #c0caf5
+
+! urxvt
+URxvt.foreground:       #c0caf5
+URxvt.background:       #2a2a2a
+URxvt.cursorColor:      #c0caf5
+URxvt.highlightColor:   #33467c
+URxvt.color0:           #15161e
+URxvt.color1:           #f7768e
+URxvt.color2:           #9ece6a
+URxvt.color3:           #e0af68
+URxvt.color4:           #7aa2f7
+URxvt.color5:           #bb9af7
+URxvt.color6:           #7dcfff
+URxvt.color7:           #a9b1d6
+URxvt.color8:           #414868
+URxvt.color9:           #f7768e
+URxvt.color10:          #9ece6a
+URxvt.color11:          #e0af68
+URxvt.color12:          #7aa2f7
+URxvt.color13:          #bb9af7
+URxvt.color14:          #7dcfff
+URxvt.color15:          #c0caf5
+
+! --- xterm ---
+xterm*faceName:         monospace
+xterm*faceSize:         11
+xterm*renderFont:       true
+xterm*internalBorder:   10
+xterm*saveLines:        10000
+xterm*scrollBar:        false
+xterm*cursorBlink:      true
+xterm*termName:         xterm-256color
+
+! --- urxvt ---
+URxvt.font:             xft:monospace:size=11
+URxvt.boldFont:         xft:monospace:bold:size=11
+URxvt.letterSpace:      0
+URxvt.internalBorder:   10
+URxvt.saveLines:        10000
+URxvt.scrollBar:        false
+URxvt.cursorBlink:      true
+URxvt.depth:            32
+!URxvt.background        rgba:0000/0000/0000/8000
