@@ -1,0 +1,250 @@
+#
+# Default twm configuration file; needs to be kept small to conserve string
+# space in systems whose compilers don't handle medium-sized strings.
+#
+# Sites should tailor this file, providing any extra title buttons, menus, etc.
+# that may be appropriate for their environment.  For example, if most of the
+# users were accustomed to uwm, the defaults could be set up not to decorate
+# any windows and to use meta-keys.
+#
+
+OpaqueMove
+RandomPlacement
+ShowIconManager
+NoGrabServer
+NoHighlight
+RestartPreviousState
+DecorateTransients
+TitleFont "-adobe-helvetica-bold-r-normal--*-120-*-*-*-*-*-*"
+ResizeFont "-adobe-helvetica-bold-r-normal--*-120-*-*-*-*-*-*"
+MenuFont "-adobe-helvetica-bold-r-normal--*-120-*-*-*-*-*-*"
+IconFont "-adobe-helvetica-bold-r-normal--*-100-*-*-*-*-*-*"
+IconManagerFont "-adobe-helvetica-bold-r-normal--*-100-*-*-*"
+ClientBorderWidth 
+BorderWidth 0
+MenuBorderWidth 0
+
+Color
+{
+    BorderColor "black"
+    DefaultBackground "gray20"
+    DefaultForeground "gray75"
+    TitleBackground "gray20"
+    TitleForeground "gray75"
+    MenuBackground "gray20"
+    MenuForeground "gray75"
+    MenuBorderColor "black"
+    MenuTitleBackground "gray70"
+    MenuTitleForeground "gray20"
+    IconBackground "gray20"
+    IconForeground "gray75"
+    IconBorderColor "gray75"
+    IconManagerBackground "gray20"
+    IconManagerForeground "gray75"
+}
+
+IconifyByUnmapping
+IconManagerGeometry "700x50+246+2" 10
+IconRegion "200x300+950+2" North East 50 50
+IconManagerDontShow
+{
+    "xlogo"
+	"xeyes"
+	"xbiff"
+	"xload"
+	"oclock"
+	"xclock"
+	"xcutsel"
+}
+NoTitle
+{
+    "xlogo"
+	"xeyes"
+	"xclock"
+	"oclock"
+	"xload"
+	"xcutsel"
+	"TWM Icon Manager"
+}
+
+
+#
+# Define some useful functions for motion-based actions.
+#
+MoveDelta 3
+Function "move-or-lower" { f.move f.deltastop f.lower }
+Function "move-or-raise" { f.move f.deltastop f.raise }
+Function "move-or-iconify" { f.move f.deltastop f.iconify }
+
+#
+# Set some useful bindings.  Sort of uwm-ish, sort of simple-button-ish
+#
+Button1 = : root : f.menu "main"
+Button2 = : root : f.menu "windowops"
+
+Button1 = m : window|icon : f.function "move-or-lower"
+Button2 = m : window|icon : f.iconify
+Button3 = m : window|icon : f.function "move-or-raise"
+
+Button1 = : title : f.function "move-or-raise"
+Button2 = : title : f.raiselower
+
+Button1 = : icon : f.function "move-or-iconify"
+Button2 = : icon : f.iconify
+
+Button1 = : iconmgr : f.iconify
+Button2 = : iconmgr : f.iconify
+
+#
+# And a menus with the usual things
+#
+menu "main"
+{
+		"Main Menu"		f.title
+		"Debian"		f.menu "/Debian"
+		"Terminal"		f.exec "urxvt &"
+        "Firefox"       f.exec "firefox &"
+        "Volume"        f.exec "alsamixergui &"
+		""			f.nop
+		"Show Icon Manager"	f.showiconmgr
+		"Hide Icon Manager"	f.hideiconmgr
+		""			f.nop
+		"Exit"			f.menu "Quit-Verify"
+}
+
+menu "Quit-Verify"
+{
+		"Really quit twm?"	f.title
+		"No, restart twm"	f.restart
+		"Yes, really quit"	f.quit
+}
+
+menu "windowops"
+{
+		"Window Ops"		f.title
+		""			f.nop
+		"Iconify"		f.iconify
+		"Resize"		f.resize
+		"Move"			f.move
+		"Raise"			f.raise
+		"Lower"			f.lower
+		""			f.nop
+		"Focus"			f.focus
+		"Unfocus"		f.unfocus
+		""			f.nop
+		"Delete"		f.delete
+		"Destroy"		f.destroy
+}
+
+# Automatically generated file. Do not edit (see /usr/share/doc/menu/html/index.html)
+
+menu "/Debian/Applications/Accessibility"
+{
+  "Xmag"    f.exec  "xmag &"
+}
+menu "/Debian/Applications/Editors"
+{
+  "Xedit"    f.exec  "xedit &"
+}
+menu "/Debian/Applications/Graphics"
+{
+  "X Window Snapshot"    f.exec  "xwd | xwud &"
+}
+menu "/Debian/Applications/Network/Communication"
+{
+  "Xbiff"    f.exec  "xbiff &"
+}
+menu "/Debian/Applications/Network/Web Browsing"
+{
+  "Lynx"    f.exec  "x-terminal-emulator  -T \"Lynx\" -e sh -c \"lynx\" &"
+}
+menu "/Debian/Applications/Network"
+{
+  "Communication" f.menu "/Debian/Applications/Network/Communication"
+  "Web Browsing" f.menu "/Debian/Applications/Network/Web Browsing"
+}
+menu "/Debian/Applications/Science/Mathematics"
+{
+  "Dc"    f.exec  "x-terminal-emulator  -T \"Dc\" -e sh -c \"/usr/bin/dc\" &"
+  "Xcalc"    f.exec  "xcalc &"
+}
+menu "/Debian/Applications/Science"
+{
+  "Mathematics" f.menu "/Debian/Applications/Science/Mathematics"
+}
+menu "/Debian/Applications/Shells"
+{
+  "Bash"    f.exec  "x-terminal-emulator  -T \"Bash\" -e sh -c \"/bin/bash --login\" &"
+  "Dash"    f.exec  "x-terminal-emulator  -T \"Dash\" -e sh -c \"/bin/dash -i\" &"
+  "mksh"    f.exec  "x-terminal-emulator  -T \"mksh\" -e sh -c \"/bin/mksh -l\" &"
+  "Sh"    f.exec  "x-terminal-emulator  -T \"Sh\" -e sh -c \"/bin/sh --login\" &"
+}
+menu "/Debian/Applications/System/Administration"
+{
+  "Debian Task selector"    f.exec  "x-terminal-emulator  -T \"Debian Task selector\" -e sh -c \"su-to-root -c tasksel\" &"
+  "Editres"    f.exec  "editres &"
+  "Xclipboard"    f.exec  "xclipboard &"
+  "Xfontsel"    f.exec  "xfontsel &"
+  "Xkill"    f.exec  "xkill &"
+  "Xrefresh"    f.exec  "xrefresh &"
+}
+menu "/Debian/Applications/System/Hardware"
+{
+  "Xvidtune"    f.exec  "xvidtune &"
+}
+menu "/Debian/Applications/System/Monitoring"
+{
+  "Pstree"    f.exec  "x-terminal-emulator  -T \"Pstree\" -e sh -c \"/usr/bin/pstree.x11\" &"
+  "Top"    f.exec  "x-terminal-emulator  -T \"Top\" -e sh -c \"/usr/bin/top\" &"
+  "Xconsole"    f.exec  "xconsole -file /dev/xconsole &"
+  "Xev"    f.exec  "x-terminal-emulator -e xev &"
+  "Xload"    f.exec  "xload &"
+}
+menu "/Debian/Applications/System"
+{
+  "Administration" f.menu "/Debian/Applications/System/Administration"
+  "Hardware" f.menu "/Debian/Applications/System/Hardware"
+  "Monitoring" f.menu "/Debian/Applications/System/Monitoring"
+}
+menu "/Debian/Applications/Viewers"
+{
+  "Xditview"    f.exec  "xditview &"
+}
+menu "/Debian/Applications"
+{
+  "Accessibility" f.menu "/Debian/Applications/Accessibility"
+  "Editors" f.menu "/Debian/Applications/Editors"
+  "Graphics" f.menu "/Debian/Applications/Graphics"
+  "Network" f.menu "/Debian/Applications/Network"
+  "Science" f.menu "/Debian/Applications/Science"
+  "Shells" f.menu "/Debian/Applications/Shells"
+  "System" f.menu "/Debian/Applications/System"
+  "Viewers" f.menu "/Debian/Applications/Viewers"
+}
+menu "/Debian/Games/Toys"
+{
+  "Oclock"    f.exec  "oclock &"
+  "Xclock (analog)"    f.exec  "xclock -analog &"
+  "Xclock (digital)"    f.exec  "xclock -digital -update 1 &"
+  "Xeyes"    f.exec  "xeyes &"
+  "Xlogo"    f.exec  "xlogo &"
+}
+menu "/Debian/Games"
+{
+  "Toys" f.menu "/Debian/Games/Toys"
+}
+menu "/Debian/Help"
+{
+  "Xman"    f.exec  "xman &"
+}
+menu "/Debian/Window Managers"
+{
+ "Twm" f.startwm "twm"
+}
+menu "/Debian"
+{
+  "Applications" f.menu "/Debian/Applications"
+  "Games" f.menu "/Debian/Games"
+  "Help" f.menu "/Debian/Help"
+  "Window Managers" f.menu "/Debian/Window Managers"
+}
