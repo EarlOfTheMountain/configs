@@ -7,6 +7,21 @@
 " sudo apt install clangd pipx fzf ripgrep
 " pipx ensurepath
 " pipx install basedpyright
+"
+" For Haskell you need hls installed, easiest with ghcup
+"
+" For js/html you need to be in your nvm environment:
+" It's a mess, so:
+" npm list -g --depth=0
+" npm install -g typescript@6
+"
+"This works currently,  nodejs is a mess...  Use AI to corse correct.
+"
+" npm install -g typescript typescript-language-server vscode-langservers-extracted
+"
+"
+"CONGRADULATIONS YOU HAVE THE ULTIMATE VIM ENVIRONMENT!
+"
 
 " Keep Vim's standard defaults (filetype detection, syntax, etc.)
 source $VIMRUNTIME/defaults.vim
@@ -90,6 +105,30 @@ if executable('basedpyright-langserver')
         \ 'name': 'basedpyright',
         \ 'cmd': {server_info->['basedpyright-langserver', '--stdio']},
         \ 'allowlist': ['python'],
+        \ })
+endif
+
+if executable('haskell-language-server-wrapper')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'haskell-language-server',
+        \ 'cmd': {server_info->['haskell-language-server-wrapper', '--lsp']},
+        \ 'allowlist': ['haskell'],
+        \ })
+endif
+
+if executable('typescript-language-server')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'typescript-language-server',
+        \ 'cmd': {server_info->['typescript-language-server', '--stdio']},
+        \ 'allowlist': ['javascript', 'javascriptreact', 'typescript', 'typescriptreact'],
+        \ })
+endif
+
+if executable('vscode-html-language-server')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'vscode-html-language-server',
+        \ 'cmd': {server_info->['vscode-html-language-server', '--stdio']},
+        \ 'allowlist': ['html'],
         \ })
 endif
 
